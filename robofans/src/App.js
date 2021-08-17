@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Cardlist from './components/Cardlist';
 import { robots } from './components/robots';
 import SearchBox from './components/SearchBox';
+import Message from './components/Message';
 
 
 class App extends Component{
@@ -24,9 +25,10 @@ class App extends Component{
             return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase())
         })
 
+
     return(
         <div className="tc">
-            <h1>Robofans</h1>
+            <Message Message={filteredRobots.length === 0? "No Record Found": "Robofans"}/>
             <SearchBox  searchChange={this.onSearchChange}/>
             <Cardlist robots={filteredRobots}/>
         </div>
