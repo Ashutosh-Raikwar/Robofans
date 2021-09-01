@@ -5,9 +5,32 @@ import reportWebVitals from './reportWebVitals';
 import tachyons from 'tachyons';
 import App from './App';
 
+// const Layout = (props) =>{
+//   return(
+//     <div>
+//       <header>My header</header>
+//       <main>{props.children[0]}</main>
+//       <h1>I am a third child</h1>
+//       <main>{props.children[1]}</main>
+//     </div>
+//   )
+// }
+
+// const App = () => {
+//   return(
+//     <div>
+//       <Layout>
+//       <h1>I am a first child</h1>
+//       <h1>I am a second child</h1>
+//       </Layout>
+
+//     </div>
+//   )
+// }
+
 ReactDOM.render(
   <React.StrictMode>
-    <App/>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
