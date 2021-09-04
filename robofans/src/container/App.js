@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Cardlist from './components/Cardlist';
+import Cardlist from '../components/Cardlist';
 //import { robots } from './components/robots';
-import SearchBox from './components/SearchBox';
-import Message from './components/Message';
-import Scroll from './components/Scroll';
+import SearchBox from '../components/SearchBox';
+import Message from '../components/Message';
+import Scroll from '../components/Scroll';
 import "./App.css";
 
 
@@ -26,7 +26,7 @@ class App extends Component {
 
 
     componentDidMount() {
-        console.log("Component didmount runned");
+        console.log("inside will");
         fetch("https://jsonplaceholder.typicode.com/users")
             .then(response => response.json())
             .then(users => this.setState({ robots: users }))
@@ -52,5 +52,38 @@ class App extends Component {
         )
     }
 }
+
+// class App extends Component{
+//     constructor(){
+//         super();
+//         this.state={
+//             name:"Ashutosh ",
+//         }
+//         console.log("inside constructor");
+//     }
+    
+//     componentWillMount(){
+//         console.log("inside component will mount");
+//         setTimeout( () => {
+//             this.setState({name:"arafat will"})
+//             console.log("inside setimeout");
+//         },3000)
+//         console.log("i will too")
+//     }
+
+//     componentDidMount(){
+//         console.log("inside component did mount");
+//         setTimeout( () => {
+//             this.setState({name:"rekha did"})
+//         },1000)
+//     }
+
+//     render(){
+//         console.log("inside render")
+//         return(
+//             <h1>hi world this is {this.state.name}</h1>
+//         )
+//     }
+// }
 
 export default App;
