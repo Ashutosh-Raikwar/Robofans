@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Cardlist from '../components/Cardlist';
-//import { robots } from './components/robots';
 import SearchBox from '../components/SearchBox';
 import Message from '../components/Message';
 import Scroll from '../components/Scroll';
+import PopUp from '../components/PopUp';
 import "./App.css";
 
 
@@ -14,6 +14,7 @@ class App extends Component {
         this.state = {
             robots: [],
             searchfield: '',
+            PopUp: false,
         }
 
         console.log("construtor!");
@@ -32,6 +33,14 @@ class App extends Component {
             .then(users => this.setState({ robots: users }))
     }
 
+    openPopup = () =>{
+        this.setState({PopUp: true})
+    }
+
+    closePopup = () =>{
+        this.setState({PopUp: false})
+    }
+
     render() {
         const {robots,searchfield} = this.state;
 
@@ -41,49 +50,23 @@ class App extends Component {
 
         return !filteredRobots.length?  <h1>Loading......</h1>
             :(
+                <React.Fragment>
+                {this.state.PopUp ? <PopUp closePopup={this.closePopup} />: ""}
+                
                 <div className="tc">
                     <Message Message={filteredRobots.length === 0 ? "No Record Found" : "Robofans"} />
                     <SearchBox searchChange={this.onSearchChange} />
-    
+                    <button onClick={this.openPopup} style={{cursor:'pointer'}}>Open pop Up</button>
+
                     <Scroll>
                         <Cardlist robots={filteredRobots} />
                     </Scroll>
                 </div>
+
+                </React.Fragment>
             )
     }
 }
 
-// class App extends Component{
-//     constructor(){
-//         super();
-//         this.state={
-//             name:"Ashutosh ",
-//         }
-//         console.log("inside constructor");
-//     }
-    
-//     componentWillMount(){
-//         console.log("inside component will mount");
-//         setTimeout( () => {
-//             this.setState({name:"arafat will"})
-//             console.log("inside setimeout");
-//         },3000)
-//         console.log("i will too")
-//     }
-
-//     componentDidMount(){
-//         console.log("inside component did mount");
-//         setTimeout( () => {
-//             this.setState({name:"rekha did"})
-//         },1000)
-//     }
-
-//     render(){
-//         console.log("inside render")
-//         return(
-//             <h1>hi world this is {this.state.name}</h1>
-//         )
-//     }
-// }
 
 export default App;
